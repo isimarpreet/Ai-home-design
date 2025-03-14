@@ -1,18 +1,16 @@
-# ==============================
-# ✅ Backend (Spring Boot)
-# ==============================
+
 
 .application.properties
 
-# Ignore compiled Java class files
+
 *.class
 
-# Ignore Maven build artifacts but KEEP important files
+
 target/
-!pom.xml  # ✅ Keep build config
-!mvnw  # ✅ Keep Maven wrapper script
-!mvnw.cmd  # ✅ Keep Windows Maven wrapper
-!/.mvn/wrapper/  # ✅ Keep Maven Wrapper JARs
+!pom.xml  
+!mvnw 
+!mvnw.cmd  
+!/.mvn/wrapper/  
 
 # Ignore IDE settings
 .idea/
@@ -25,41 +23,35 @@ target/
 *.log
 *.tmp
 
-# ✅ IMPORTANT: Do NOT ignore Maven wrapper files
+#
 !mvnw
 !mvnw.cmd
 !/.mvn/wrapper/maven-wrapper.jar
 !/.mvn/wrapper/maven-wrapper.properties
 
-# ==============================
-# ✅ Frontend (React)
-# ==============================
 
-# Ignore dependencies (Auto-generated)
+
+
 frontend-react/node_modules/
 
-# Ignore build output
+
 frontend-react/build/
 
-# Ignore logs
+
 frontend-react/npm-debug.log
 frontend-react/yarn-debug.log
 frontend-react/yarn-error.log
 frontend-react/.eslintcache
 frontend-react/.parcel-cache/
 
-# Ignore environment variables (API keys, secrets)
+
 frontend-react/.env
 
-# ==============================
-# ✅ Shared (Uploads, OS, Editor, etc.)
-# ==============================
 
-# ✅ KEEP Uploads Folder but Ignore Its Contents
 uploads/*
 !uploads/.gitkeep  # ✅ Keep empty uploads folder in Git
 
-# Ignore system & editor-specific files
+
 .DS_Store
 Thumbs.db
 .vscode/
