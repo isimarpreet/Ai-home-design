@@ -2,6 +2,8 @@
 # ✅ Backend (Spring Boot)
 # ==============================
 
+.application.properties
+
 # Ignore compiled Java class files
 *.class
 
