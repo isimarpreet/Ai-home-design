@@ -30,13 +30,9 @@ target/
 !/.mvn/wrapper/maven-wrapper.properties
 
 
-
-
 frontend-react/node_modules/
 
-
 frontend-react/build/
-
 
 frontend-react/npm-debug.log
 frontend-react/yarn-debug.log
