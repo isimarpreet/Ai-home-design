@@ -95,6 +95,17 @@ function App() {
 
   return (
     <div className="App">
+      <header className="header" style={{ position: "fixed", top: 0, left: 0, width: "100%" }}>
+        <img src="./frontend-react/src/renovaite.png" alt="Logo" className="logo" />
+        <nav className="nav">
+          <button className="nav-button">Home</button>
+          <button className="nav-button">Services</button>
+          <button className="nav-button">About</button>
+          <button className="nav-button">Contact</button>
+        </nav>
+        <button className="get-started">Get Started</button>
+      </header>
+
       <h2>Upload a Picture of Your Room</h2>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload Image</button>
@@ -116,19 +127,20 @@ function App() {
       {suggestions.length > 0 && (
         <div>
           <h3>AI Renovation Suggestions:</h3>
-          
-            {suggestions.map((suggestion, index) => (
-              <li key={index}>
-                <input type="checkbox" /> {suggestion}
-              </li>
-            ))}
-          
+          {suggestions.map((suggestion, index) => (
+            <li key={index}>
+              <input type="checkbox" /> {suggestion}
+            </li>
+          ))}
         </div>
       )}
 
       {error && <p style={{ color: "red" }}>{error}</p>}
+      
+      <footer className="footer" style={{ position: "fixed", bottom: 0, left: 0, width: "100%" }}>© 2025 renovAIte. All rights reserved.</footer>
     </div>
   );
 }
+
 
 export default App;
