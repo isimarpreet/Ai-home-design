@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap'); /* Import Montserrat Bold (700 weight) */
+
+
+/* Global Styles */
+
+  body {
+    background-image: url(background.jpg);
+    background-size: cover;  /* Ensures the image covers the whole page */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat;  /* Prevents repetition */
+    background-attachment: fixed;  /* Makes the image stay in place while scrolling */
+    padding: 0 10%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+  
+
+  
+  /* Header Styling */
+  .first-header {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .first-logo {
+    padding: 0 10%;
+    height: 50px;
+  }
+  
+  .first-nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Get Started Button */
+.get-started-btn {
+    background-color: #000000; /* Initial background color */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Padding for button */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    white-space: nowrap; 
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0px 4px 6px #cb63f4; /* Shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover Effects */
+  .get-started-btn:hover {
+    color: rgb(237, 237, 237);
+    box-shadow: 5px 4px 6px #000000;
+    background-color: #cb63f4;/* Change color on hover */
+    transform: scale(1.1) translateX(10px); /* Slightly pop out effect */
+  }
+  
+  
+  /* Main Content */
+  .first-content {
+    padding-top: 100px;
+    text-align: center;
+  }
+  
+  /* Footer */
+  .first-footer {
+    text-align: center;
+    background-color: #fffdfd;
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Position from the left edge */
+    right: 0; /* Position from the right edge */
+    padding: 5px; /* Remove footer's padding */
+      
+  }
+  
+
+
+/* Floating Button */
+.floating-btn {
+    position: fixed; /* Stays in place while scrolling */
+    bottom: 30px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    width: 100px; /* Button size */
+    height: 100px;
+    border-radius: 50%; /* Makes it round */
+    background-color: #ffffff00; /* Green background */
+    border: none; /* Removes border */
+    display: flex; /* Centers content inside */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.7s ease-in-out; /* Smooth transitions for hover effects */
+    margin-bottom: 40px;
+    margin-right: 10px;
+  }
+  
+  /* Image inside the button */
+  .floating-btn img {
+    width: 100%; /* Adjust image size relative to button */
+    height: auto;
+   
+  }
+  
+/* Hover Effects with Slow Rotation and Glow */
+.floating-btn:hover {
+  
+    transform: rotate(65deg) scale(1.3);
+    box-shadow: 0px 0px 0px #cb63f4;/* Glowing effect on hover */
+}
+
+
+
+
+/*HEADING*/
+.slogan {
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat, sans-serif as fallback */
+  font-weight: 700; /* Ensure it's bold */
+  font-size: 60px; /* Adjust as needed */
+  color: #222; /* Darker text */
+  animation: rotateShadow 5s linear infinite; /* Animation */
+}
+@keyframes rotateShadow {
+  0% { text-shadow: 5px 0 5px #646463; }
+  12.5% { text-shadow: 3.5px 3.5px 5px #646463;  }
+  25% { text-shadow: 0 5px 5px #646463;  }
+  37.5% { text-shadow: -3.5px 3.5px 5px #646463; }
+  50% { text-shadow: -5px 0 5px #646463;  }
+  62.5% { text-shadow: -3.5px -3.5px 5px #646463;  }
+  75% { text-shadow: 0 -5px 5px #646463;  }
+  87.5% { text-shadow: 3.5px -3.5px 5px  #646463; }
+  100% { text-shadow: 5px 0 5px #646463;  }
+}
+
+
+
+
+
+/*first portion division (about)*/
+.design-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .design-section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.text-content {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  padding-top: 70px;
+  
+}
+
+@media (min-width: 768px) {
+  .text-content {
+    width: 50%;
+    text-align: left;
+    
+  }
+}
+
+.image-content {
+  display: flex;
+  justify-content: center;
+  padding-left: 50px;
+  
+}
+
+@media (min-width: 768px) {
+  .image-content {
+    width: 60%;
+    padding-bottom: 60px;
+  }
+}
+
+.image-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  
+  }
+
+  .spaced-text {
+    font-size: larger;  
+    line-height: 2.0;
+    align-items: center;
+    margin: 0; 
+  }
+
