@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 public class HuggingFaceService {
 
-    private static final String HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/digiplay/instruct-pix2pix"; // ✅ using img2img instruct pix2pix
-    private static final String HUGGINGFACE_API_TOKEN = "Bearer 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"; // your real Hugging Face token
+//    private static final String HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/digiplay/instruct-pix2pix";  ✅ using img2img instruct pix2pix
+ //   private static final String HUGGINGFACE_API_TOKEN = "Bearer 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"; // your real Hugging Face token
 
     public byte[] modifyImage(String imageName, List<String> selectedIdeas) throws Exception {
         // Read the uploaded image file
