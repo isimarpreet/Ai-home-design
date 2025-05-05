@@ -1,19 +1,31 @@
 import React, { useState } from "react";
 import "./App.css";
+import logo from "./renovaite.png"; 
+import uploadlogo from './uploadlogo.png';
+
 
 function App() {
+  
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [roomDescription, setRoomDescription] = useState(""); // Holds the AI-generated room description
-  const [suggestions, setSuggestions] = useState([]); // Holds AI-generated renovation suggestions
+  const [roomDescription, setRoomDescription] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState("");
+  const [checkedSuggestions, setCheckedSuggestions] = useState([]);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [loadingModify, setLoadingModify] = useState(false);
+  const [imageName, setImageName] = useState("ravinder room.jpg"); // Set appropriately
+  const [selectedIdeas, setSelectedIdeas] = useState([]);   // List of strings
+  const [modifiedImageUrl, setModifiedImageUrl] = useState(null);
 
-  // Handles file selection
+  
+  
+  
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
 
-    // Show image preview
     const reader = new FileReader();
     reader.onloadend = () => {
       setPreviewUrl(reader.result);
@@ -21,7 +33,6 @@ function App() {
     reader.readAsDataURL(file);
   };
 
-  // Uploads image to backend
   const handleUpload = async () => {
     if (!selectedFile) {
       alert("Please select an image first!");
@@ -49,15 +60,11 @@ function App() {
     }
   };
 
-  // Fetches AI renovation suggestions after image upload
   const fetchSuggestions = async (imageName) => {
+    setLoadingSuggestions(true);
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/gemini/analyze?imageName=${imageName}`
-      );
-
+      const response = await fetch(`http://localhost:8080/api/gemini/analyze?imageName=${imageName}`);
       const data = await response.json();
-
       if (response.ok) {
         processSuggestions(data.ai_response);
       } else {
@@ -66,25 +73,22 @@ function App() {
     } catch (error) {
       setError("Failed to fetch AI suggestions: " + error.message);
     }
+    setLoadingSuggestions(false);
   };
 
-  // Processes AI response and extracts room description + renovation ideas
   const processSuggestions = (aiResponse) => {
     try {
-      const jsonString = aiResponse.replace(/\n/g, ""); // Clean new lines
+      const jsonString = aiResponse.replace(/\n/g, " ");
       const parsedData = JSON.parse(jsonString);
-
       const aiText = parsedData.candidates[0].content.parts[0].text;
 
-      // Extract Room Description
       const roomDescMatch = aiText.match(/ROOM DESCRIPTION:(.*?)RENOVATION IDEAS:/s);
       const roomDesc = roomDescMatch ? roomDescMatch[1].trim() : "No description found.";
       setRoomDescription(roomDesc);
 
-      // Extract Renovation Suggestions
       const suggestionsList = aiText
         .split("\n")
-        .filter((line) => line.includes("**")) // Select lines with bold text
+        .filter((line) => line.includes("**"))
         .map((line) => line.replace(/\*\*/g, "").trim());
 
       setSuggestions(suggestionsList);
@@ -93,54 +97,113 @@ function App() {
     }
   };
 
+  const handleCheckboxChange = (index) => {
+    if (checkedSuggestions.includes(index)) {
+      setCheckedSuggestions(checkedSuggestions.filter((i) => i !== index));
+    } else {
+      setCheckedSuggestions([...checkedSuggestions, index]);
+    }
+  };
+
+  const handleModifyImage = async () => {
+    setLoadingModify(true);
+  
+    try {
+      const response = await fetch(`http://localhost:8080/api/modify?imageName=${encodeURIComponent(imageName)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(selectedIdeas),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to modify image');
+      }
+  
+      const blob = await response.blob();
+      const imageURL = URL.createObjectURL(blob);
+  
+      // Optional: display or use imageURL in your app
+      setModifiedImageUrl(imageURL);
+    } catch (error) {
+      console.error('Error modifying image:', error);
+    } finally {
+      setLoadingModify(false);
+    }
+  };
+  
+
   return (
     <div className="App">
-      <header className="header" style={{ position: "fixed", top: 0, left: 0, width: "100%" }}>
-        <img src="./frontend-react/src/renovaite.png" alt="Logo" className="logo" />
-        <nav className="nav">
-          <button className="nav-button">Home</button>
-          <button className="nav-button">Services</button>
-          <button className="nav-button">About</button>
-          <button className="nav-button">Contact</button>
-        </nav>
-        <button className="get-started">Get Started</button>
-      </header>
+      {/* Your header and navbar code */}
 
-      <h2>Upload a Picture of Your Room</h2>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload Image</button>
+      <div className="upload-container" style={{ width: "60%" }}>
+        <h2>Upload a Picture of Your Room</h2>
+        <input
+          type="file"
+          id="file-upload"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+        />
 
-      {previewUrl && (
-        <div>
-          <h3>Image Preview:</h3>
-          <img src={previewUrl} alt="Preview" width="400px" />
-        </div>
-      )}
+        <label htmlFor="file-upload" className="upload-label">
+          <img src={uploadlogo} alt="Upload" className="upload-logo" />
+          <p className="upload-instruction">(Upload JPG, PNG, JPEG files.)</p>
+        </label>
+
+        <button onClick={handleUpload}>Upload Image</button>
+
+        {previewUrl && (
+          <div className="imagepreview-container" style={{ width: "60%" }}>
+            <h3>Image Preview:</h3>
+            <img src={previewUrl} alt="Preview" width="400px" />
+          </div>
+        )}
+      </div>
 
       {roomDescription && (
-        <div>
-          <h3>Room Description:</h3>
+        <div className="room-description">
+          <h2 className="boldText">Room Description:</h2>
           <p>{roomDescription}</p>
         </div>
       )}
 
-      {suggestions.length > 0 && (
-        <div>
-          <h3>AI Renovation Suggestions:</h3>
-          {suggestions.map((suggestion, index) => (
-            <li key={index}>
-              <input type="checkbox" /> {suggestion}
-            </li>
-          ))}
+      {loadingSuggestions ? (
+        <div className="loading-spinner">
+          <p>Analyzing your room... Please wait!</p>
+          <div className="spinner"></div>
         </div>
+      ) : (
+        suggestions.length > 0 && (
+          <div className="suggestions-container">
+            <h2 className="boldText">Renovation Suggestions:</h2>
+            <div className="suggestions-list">
+              {suggestions.map((suggestion, index) => (
+                <div
+                  key={index}
+                  className={`suggestion-box ${checkedSuggestions.includes(index) ? "checked" : ""}`}
+                >
+                  <input
+                    type="checkbox"
+                    id={`suggestion-${index}`}
+                    onChange={() => handleCheckboxChange(index)}
+                    checked={checkedSuggestions.includes(index)}
+                  />
+                  <label htmlFor={`suggestion-${index}`}>{suggestion}</label>
+                </div>
+              ))}
+            </div>
+            <button onClick={handleModifyImage} disabled={loadingModify}>
+              {loadingModify ? "Modifying..." : "Generate Modified Image"}
+            </button>
+          </div>
+        )
       )}
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      
-      <footer className="footer" style={{ position: "fixed", bottom: 0, left: 0, width: "100%" }}>© 2025 renovAIte. All rights reserved.</footer>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }
-
 
 export default App;

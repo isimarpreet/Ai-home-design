@@ -1,11 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import FirstPage from "./first"; // Import your new webpage component
-import "./first.css"; // Import your styles
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import MainApp from './App'; // 👈 Import MainApp directly
+import './App.css'; 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <FirstPage />
+    <MainApp /> {/* 👈 Use MainApp directly */}
   </React.StrictMode>
 );
+
+
