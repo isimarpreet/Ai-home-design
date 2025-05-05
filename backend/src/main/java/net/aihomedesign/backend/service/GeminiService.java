@@ -28,7 +28,7 @@ public class GeminiService {
         String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
         //Ai prompt
-        String prompt = "Analyze this image and provide a detailed room description in the format: 'ROOM DESCRIPTION: {description}'. "
+        String prompt = "Analyze this image and provide a detailed room description in the format: 'ROOM DESCRIPTION: description'. "
                + "Then, suggest 10-12 renovation ideas in the format: 'RENOVATION IDEAS: {list of ideas}'. "
                + "Each suggestion should have a title and estimated cost and the cost should be in Rupees .";
 
