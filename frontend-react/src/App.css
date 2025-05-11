@@ -1,15 +1,244 @@
 /* General Layout */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+
+body {
+  background-image: url(background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 0 10%;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: large;
+  background-color: #fbfbfb;
+}
+
 .App {
-  font-family: Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 120px; /* Increase padding to account for fixed header */
+  position: relative;
+  z-index: 1; /* Lower z-index for main content */
+}
+
+/* Main Content Area */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Upload Section */
+.upload-container {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.upload-label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 2rem;
+  border: 2px dashed #2a6782;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: none;
+  box-shadow: none;
+}
+
+.upload-label:hover {
+  background: none;
+  box-shadow: none;
+  border: 2px dashed #2a6782;
+}
+
+.upload-logo {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.upload-logo:hover {
+  transform: scale(1.1);
+  border: none;
+  box-shadow: none;
+}
+
+.upload-instruction {
+  color: #2a6782;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Image Preview */
+.imagepreview-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.imagepreview-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Suggestions Section */
+.suggestions-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.suggestion-box {
+  background: white;
+  border: 2px solid #dbe7f5;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.suggestion-box:hover {
+  transform: translateX(5px);
+  border-color: #2a6782;
+}
+
+.suggestion-box.checked {
+  background: #2a6782;
+  color: white;
+  border-color: #2a6782;
+}
+
+/* Room Description */
+.room-description {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Cost Estimation */
+.cost-estimation {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.cost-amount {
+  color: #2a6782;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.cost-note {
+  color: #4a4933e3;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Loading States */
+.loading-spinner {
+  display: flex;
   justify-content: center;
-  text-align: center;
-  background-color: #d4e2f2;
-  color: #333;
-  min-height: 100vh;
-  padding: 20px;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #dbe7f5;
+  border-top: 5px solid #2a6782;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Messages */
+.error-message {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding-top: 80px;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .upload-container,
+  .imagepreview-container,
+  .suggestions-container,
+  .room-description,
+  .cost-estimation {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  
+  .suggestion-box {
+    padding: 0.8rem;
+  }
 }
 
 h2, h3 {
@@ -23,13 +252,27 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 10px;
+  margin-bottom: 20px;
   transition: background 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #a09e70eb;
+}
+
+.boldText {
+  font-weight: 900;
+  font-size: 2rem;
+  color: #216a85;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  padding-bottom: 0.3rem;
+  display: inline-block;
 }
 
 img {
@@ -45,39 +288,180 @@ input[type="file"] {
   margin-bottom: 15px;
 }
 
-/* Suggestions Styling */
-.suggestions-container {
-  margin-top: 20px;
-  width: 50%;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.suggestions-list {
-  text-align: left;
-}
-
-.suggestion-item {
+.first-header {
+  background: linear-gradient(180deg, #dbe7f5,#fffffd);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 50px;
+  width: 100%;
   display: flex;
   align-items: center;
-  margin: 5px 0;
+  justify-content: space-between;
+  padding-top: 15px; 
+  padding-right: 70px;
+  z-index: 1000; /* Add high z-index to keep header on top */
 }
 
-.suggestion-item input {
-  margin-right: 10px;
+.first-logo {
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  padding: 0 10%;
+  width: 200px;
+  height: auto;
 }
 
-.room-description {
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+.first-nav {
+  display: flex;  
+  gap: 20px;
+}
+
+.nav-btn-styled-btn {
+  background: linear-gradient(180deg, #e8eff8, #f8fafd);
+  color: #4a4933e3;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: fit-content;
+  height: fit-content;
+  box-shadow: 0px 0px 0px #b4d6fd;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-styled-btn:hover {
+  box-shadow: 0px 0px 60px #545555;
+  background-color: #877283;
+  transform: scale(1.1);
+}
+
+.get-started-btn {
+  background-color: #4a4933e3;
+  color: rgba(255, 255, 255, 0.834);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 70px;
+  font-size: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+  left: -30px;
+}
+
+.get-started-btn:hover {
+  color: rgba(30, 30, 30, 0.985);
+  box-shadow: 10px 10px 60px #968193;
+  background-color: #b79eb4;
+  transform: scale(1.1) translateX(-20px);
+}
+
+.first-footer {
+  text-align: center;
+  background-color: #dbe7f5;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3px;
+}
+
+.room-scan-section {
+  margin: 20px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.viewer-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin: 20px auto;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scan-btn {
+  background-color: #4a4933e3;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.scan-btn:hover {
+  background-color: #3a3923e3;
+  transform: scale(1.05);
+}
+
+.scanning-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  z-index: 1000;
+}
+
+.style-preference {
+  margin: 20px auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+.style-select {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   margin-top: 10px;
+  width: 200px;
 }
 
-.error-message {
-  color: red;
-  margin-top: 10px;
+/* Ensure all content sections stay below header */
+.upload-container,
+.imagepreview-container,
+.suggestions-container,
+.room-description,
+.cost-estimation,
+.workflow-section {
+  position: relative;
+  z-index: 1;
 }
+
+
+
+
