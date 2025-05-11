@@ -1,5 +1,6 @@
 package net.aihomedesign.backend.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.net.URI;
@@ -13,8 +14,10 @@ import java.util.List;
 @Service
 public class HuggingFaceService {
 
-//    private static final String HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/digiplay/instruct-pix2pix";  ✅ using img2img instruct pix2pix
- //   private static final String HUGGINGFACE_API_TOKEN = "Bearer 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"; // your real Hugging Face token
+    @Value("${huggingface.api.key}")
+    private String HUGGINGFACE_API_TOKEN;
+
+    private static final String HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/stabilityai/control-lora";
 
     public byte[] modifyImage(String imageName, List<String> selectedIdeas) throws Exception {
         // Read the uploaded image file
@@ -31,14 +34,18 @@ public class HuggingFaceService {
         String payload = "{\n" +
                 "  \"inputs\": {\n" +
                 "    \"image\": \"" + base64Image + "\",\n" +
-                "    \"prompt\": \"" + instruction + "\"\n" +
+                "    \"prompt\": \"" + instruction + "\",\n" +
+                "    \"controlnet_conditioning_scale\": 0.8,\n" +
+                "    \"guidance_scale\": 8.0,\n" +
+                "    \"num_inference_steps\": 30,\n" +
+                "    \"negative_prompt\": \"blurry, low quality, distorted, unrealistic\"\n" +
                 "  }\n" +
                 "}";
 
         // Send HTTP request to Hugging Face
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(HUGGINGFACE_API_URL))
-                .header("Authorization", HUGGINGFACE_API_TOKEN)
+                .header("Authorization", "Bearer " + HUGGINGFACE_API_TOKEN)
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(payload))
                 .build();

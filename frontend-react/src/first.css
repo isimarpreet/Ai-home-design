@@ -1,217 +1,114 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100;1,100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital@0;1&display=swap');
 
-/* Global Styles */
-
-  body {
-    background-image: url(background.png);
-    background-size: cover;  /* Ensures the image covers the whole page */
-    background-position: center;  /* Centers the image */
-    background-repeat: no-repeat;  /* Prevents repetition */
-    background-attachment: fixed;  /* Makes the image stay in place while scrolling */
-    padding: 0 10%;
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    background-color: #faebd7;
-    
-    
-}
-
-* {
-  font-family: "Times New Roman", Times, serif !important;
-}
-
-/* Custom Glowing Cursor */
-.cursor {
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease-out;
-} 
-
-
-  /* Header Styling */
-  .first-header {
-    background: linear-gradient(180deg, #dbe7f5,#fffffd);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 15px; 
-    padding-right: 70px;   
-  }
-  
-  .first-logo {
-    padding: 0 10%;
-    width: 200px; /* Increase this value to make the logo bigger */
-    height: auto;
-  }
-  
-  .first-nav {
-    
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .nav-btn-styled-btn {
-    background: linear-gradient(180deg, #e8eff8,#fffffd);
-    color: #4a4933e3; /* Text color */
-    padding: 15px 30px; /* Padding for button */
-    border: none; /* Removes border */
-    border-radius: 40px; /* Rounded corners */
-    font-size: 20px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    white-space: nowrap; 
-    width: fit-content;
-    height: fit-content;
-    box-shadow: 0px 0px 0px #b4d6fd;
-
-    transition: all 0.1s ease; /* Smooth transition for hover effects */
-    display: flex; /* Enable Flexbox */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-  }
-  .nav-btn-styled-btn:hover {
-
-    box-shadow: 0px 0px 60px #545555;
-    background-color: #877283;/* Change color on hover */
-    transform: scale(1.1) ; /* Slightly pop out effect */
-  }
-
-
-
-  
-  /* Get Started Button */
-.get-started-btn {
-    background-color:#4a4933e3;
-    color: rgba(255, 255, 255, 0.834);
-    padding: 15px 30px;
-    border: none;
-    border-radius: 70px;
-    font-size: 20px;
-    cursor: pointer;
-    white-space: nowrap;
-    width: fit-content;
-    height: fit-content;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    transition: all 0.3s ease;
-    position: relative;
-    left: -30px;
-}
-  
-  /* Hover Effects */
-  .get-started-btn:hover {
-    color: rgba(30, 30, 30, 0.985);
-    box-shadow: 10px 10px 60px #968193;
-    background-color: #b79eb4;/* Change color on hover */
-    transform: scale(1.1) translateX(-20px); /* Slightly pop out effect */
-  }
-  
-  
-  /* Main Content */
-  .first-content {
-    padding-top: 100px;
-    text-align: center;
-  }
-  
-  /* Footer */
-  .first-footer {
-    text-align: center;
-    background-color: #dbe7f5;
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Position from the left edge */
-    right: 0; /* Position from the right edge */
-    padding: 3px; /* Remove footer's padding */
-      
-  }
-  
-
-
-/* Floating Button */
-.floating-btn {
-    position: fixed; /* Stays in place while scrolling */
-    bottom: 30px; /* Distance from the bottom */
-    right: 30px; /* Distance from the right */
-    width: 100px; /* Button size */
-    height: 100px;
-    border-radius: 50%; /* Makes it round */
-    background-color: #ffffff00; /* Green background */
-    border: none; /* Removes border */
-    display: flex; /* Centers content inside */
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.7s ease-in-out; /* Smooth transitions for hover effects */
-    margin-bottom: 40px;
-    margin-right: 10px;
-  }
-  
-  /* Image inside the button */
-  .floating-btn img {
-    width: 100%; /* Adjust image size relative to button */
-    height: auto;
-   
-  }
-  
-/* Hover Effects with Slow Rotation and Glow */
-.floating-btn:hover {
-  
-    transform: rotate(65deg) scale(1.3);
-    box-shadow: 0px 0px 0px #cb63f4;/* Glowing effect on hover */
-}
-
-
-
-
-/*HEADING*/
-.slogan {
+body {
+  background-image: url(background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 0 10%;
+  margin: 0;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 60px; /* Adjust as needed */
-  color: #222; /* Darker text */
-  text-shadow: 2px 5px 6px rgba(0, 0, 0, 0.359);
-  transition: text-shadow 0.3s ease;
+  font-weight: 600;
+  font-size: large;
+  background-color: #fbfbfb;
+  
 }
 
-.slogan:hover {
-  text-shadow: -6px 5px 8px rgba(0, 0, 0, 0.359);
+.first-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
+.first-header {
+  background: linear-gradient(180deg, #dbe7f5,#fffffd);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px; 
+  padding-right: 70px;   
+}
 
+.first-logo {
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  padding: 0 10%;
+  width: 200px;
+  height: auto;
+}
 
-/*first portion division (about)*/
+.first-nav {
+  display: flex;  
+  gap: 20px;
+}
+
+.nav-btn-styled-btn {
+  background: linear-gradient(180deg, #e8eff8, #f8fafd);
+  color: #4a4933e3;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: fit-content;
+  height: fit-content;
+  box-shadow: 0px 0px 0px #b4d6fd;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-styled-btn:hover {
+  box-shadow: 0px 0px 60px #545555;
+  background-color: #877283;
+  transform: scale(1.1);
+}
+
+.get-started-btn {
+  background-color: #4a4933e3;
+  color: rgba(255, 255, 255, 0.834);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 70px;
+  font-size: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+  left: -30px;
+}
+
+.get-started-btn:hover {
+  color: rgba(30, 30, 30, 0.985);
+  box-shadow: 10px 10px 60px #968193;
+  background-color: #b79eb4;
+  transform: scale(1.1) translateX(-20px);
+}
+
 .design-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 100px;
+  margin-bottom: -2rem;
 }
 
 @media (min-width: 768px) {
@@ -223,13 +120,9 @@
 
 .text-content {
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-
   text-align: center;
   font-size: large;
-  padding-top: 50px;
+  padding-top: 0px;
   width: 100%;
 }
 
@@ -240,96 +133,398 @@
   }
 }
 
-
 .image-content {
   display: flex;
   justify-content: center;
-  padding-left: 60px;
-  
-  
+  padding-left: 30px;
+  box-shadow: none;
+  margin-top: -90px;
 }
-
 
 @media (min-width: 768px) {
   .image-content {
-    width: 65%;
-    padding-top: 50px;
+    width: 70%;
   }
 }
 
 .image-content img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.slogan {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  color: #222;
+  text-shadow: 2px 5px 6px rgba(0, 0, 0, 0.359);
+  transition: text-shadow 0.3s ease;
+}
+
+.slogan:hover {
+  text-shadow: -6px 5px 8px rgba(0, 0, 0, 0.359);
+}
+
+.spaced-text {
+  font-size: larger;
+  line-height: 1.6;
+  align-items: center;
+  margin: 0;
+}
+
+.highlight-box,
+.highlight-title,
+.highlight-description {
+  display: none;
+}
+
+.features-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.feature-card img {
+  width: 50px;
+  margin-bottom: 1rem;
+}
+
+.cta-section {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.cta-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: #2a6782;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #1d4f64;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 115px;
+  height: 115px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 40px;
+  margin-right: 10px;
+  outline: none;
+  box-shadow: none;
+}
+
+.floating-btn img {
   width: 100%;
+  height: auto;
+  border: none;
+  box-shadow: none;
+}
+
+.floating-btn:hover {
+  background: none;
+  transform: rotate(65deg) scale(1.3);
+  box-shadow: none;
+}
+
+.first-footer {
+  text-align: center;
+  background-color: #dbe7f5;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3px;
+}
+
+/* About Page Styles */
+.about-section {
+  margin-top: 80px;
+  padding: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  height: calc(100vh - 180px);
+  overflow: hidden;
+}
+
+.about-title {
+  color: #2a6782;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.about-content {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
   height: 100%;
-  object-fit: cover; 
-  
+  overflow-y: auto;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a4933e3;
+  margin-bottom: 1rem;
+}
+
+/* Services Page Styles */
+.services-section {
+  margin-top: 80px;
+  padding: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: calc(100vh - 180px);
+  overflow: hidden;
+}
+
+.services-title {
+  color: #2a6782;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.service-card {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h2 {
+  color: #2a6782;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: #4a4933e3;
+  line-height: 1.6;
+}
+
+/* Contact Page Styles */
+.contact-section {
+  margin-top: 80px;
+  padding: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  height: calc(100vh - 180px);
+  overflow: hidden;
+}
+
+.contact-title {
+  color: #2a6782;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.contact-content {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.contact-info h2 {
+  color: #2a6782;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a4933e3;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-item h3 {
+  color: #2a6782;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+  color: #4a4933e3;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Custom scrollbar for the content areas */
+.about-content::-webkit-scrollbar,
+.services-grid::-webkit-scrollbar,
+.contact-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.about-content::-webkit-scrollbar-track,
+.services-grid::-webkit-scrollbar-track,
+.contact-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb,
+.services-grid::-webkit-scrollbar-thumb,
+.contact-content::-webkit-scrollbar-thumb {
+  background: #2a6782;
+  border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb:hover,
+.services-grid::-webkit-scrollbar-thumb:hover,
+.contact-content::-webkit-scrollbar-thumb:hover {
+  background: #1d4f64;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
-
-  .spaced-text {
-    font-size: larger;  
-    line-height: 1.6;
-    align-items: center;
-    margin: 0; 
-  }
-
-
-
-
-
-
   
-  .highlight-box {
-    text-align: center;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    margin: 2rem 0;
+  .contact-details {
+    grid-template-columns: 1fr;
   }
   
-  .highlight-title {
-    font-size: 1.8rem;
-    color: #2a6782;
+  .about-section,
+  .services-section,
+  .contact-section {
+    height: calc(100vh - 160px);
   }
-  
-  .features-row {
-    display: flex;
-    justify-content: space-around;
-    padding: 2rem 0;
+}
+
+/* Workflow Section Styles */
+.workflow-section {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 1200px;
+  margin-bottom: 4rem;
+}
+
+.workflow-title {
+  color: #2a6782;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.workflow-step {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.workflow-step:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  background: #2a6782;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 1.5rem;
+}
+
+.workflow-step h3 {
+  color: #2a6782;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.workflow-step p {
+  color: #4a4933e3;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .workflow-steps {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    flex-wrap: wrap;
   }
   
-  .feature-card {
-    background: #f9f9f9;
-    border-radius: 10px;
-    padding: 1.2rem;
-    text-align: center;
-    width: 250px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  .workflow-section {
+    padding: 1rem;
   }
-  
-  .feature-card img {
-    width: 50px;
-    margin-bottom: 1rem;
-  }
-  
-  .cta-section {
-    text-align: center;
-    margin: 3rem 0;
-  }
-  
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    background-color: #2a6782;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #1d4f64;
-  }
-  
+} 

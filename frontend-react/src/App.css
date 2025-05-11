@@ -13,20 +13,232 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: large;
-  background-color: #faebd7;
+  background-color: #fbfbfb;
 }
 
 .App {
-  margin-top: 100px;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 120px; /* Increase padding to account for fixed header */
+  position: relative;
+  z-index: 1; /* Lower z-index for main content */
+}
+
+/* Main Content Area */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Upload Section */
+.upload-container {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.upload-label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 2rem;
+  border: 2px dashed #2a6782;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: none;
+  box-shadow: none;
+}
+
+.upload-label:hover {
+  background: none;
+  box-shadow: none;
+  border: 2px dashed #2a6782;
+}
+
+.upload-logo {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.upload-logo:hover {
+  transform: scale(1.1);
+  border: none;
+  box-shadow: none;
+}
+
+.upload-instruction {
+  color: #2a6782;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Image Preview */
+.imagepreview-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.imagepreview-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Suggestions Section */
+.suggestions-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.suggestion-box {
+  background: white;
+  border: 2px solid #dbe7f5;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.suggestion-box:hover {
+  transform: translateX(5px);
+  border-color: #2a6782;
+}
+
+.suggestion-box.checked {
+  background: #2a6782;
+  color: white;
+  border-color: #2a6782;
+}
+
+/* Room Description */
+.room-description {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Cost Estimation */
+.cost-estimation {
+  background: linear-gradient(180deg, #dbe7f5, #fffffd);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(42, 103, 130, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.cost-amount {
+  color: #2a6782;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.cost-note {
+  color: #4a4933e3;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Loading States */
+.loading-spinner {
+  display: flex;
   justify-content: center;
-  text-align: center;
-  background-color: #d4e2f200;
-  color: #000000;
-  min-height: 70vh;
-  padding: 20px;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #dbe7f5;
+  border-top: 5px solid #2a6782;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Messages */
+.error-message {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding-top: 80px;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .upload-container,
+  .imagepreview-container,
+  .suggestions-container,
+  .room-description,
+  .cost-estimation {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  
+  .suggestion-box {
+    padding: 0.8rem;
+  }
 }
 
 h2, h3 {
@@ -50,22 +262,18 @@ button:hover {
   background-color: #a09e70eb;
 }
 
-
-
-  .boldText {
-    font-weight: 900;
-    font-size: 2rem;
-    color: #216a85;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    padding-bottom: 0.3rem;
-    display: inline-block;
-  }
-  
-
+.boldText {
+  font-weight: 900;
+  font-size: 2rem;
+  color: #216a85;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
 
 img {
   margin-top: 20px;
@@ -80,60 +288,6 @@ input[type="file"] {
   margin-bottom: 15px;
 }
 
-/* Suggestions Styling */
-.suggestions-container {
-  margin-top: 20px;
-  width: 95%;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 55px rgba(0, 0, 0, 0.244);
-}
-
-.suggestions-list {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 40px;
-}
-
-.suggestion-box {
-  border: 2px solid #c3c3c3;
-  padding: 15px;
-  margin: 5px 0;
-  border-radius: 10px;
-  background-color: #f8f8f8;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.suggestion-box.checked {
-  background-color: #a09e70eb;
-  border-color: #4a4933e3;
-  color: #ffffff;
-}
-
-.suggestion-box input {
-  width: 20px;
-  height: 20px;
-}
-
-.room-description {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 55px rgba(0, 0, 0, 0.244);
-  margin-top: 10px;
-}
-
-.error-message {
-  color: red;
-  margin-top: 10px;
-}
-
 .first-header {
   background: linear-gradient(180deg, #dbe7f5,#fffffd);
   position: fixed;
@@ -145,7 +299,8 @@ input[type="file"] {
   align-items: center;
   justify-content: space-between;
   padding-top: 15px; 
-  padding-right: 70px;   
+  padding-right: 70px;
+  z-index: 1000; /* Add high z-index to keep header on top */
 }
 
 .first-logo {
@@ -225,83 +380,86 @@ input[type="file"] {
   padding: 3px;
 }
 
-.upload-container {
-  border: 3px dashed #6fa0c9;
-  padding: 20px;
-  margin: 30px auto;
-  width: fit-content;
-  max-width: 90%;
+.room-scan-section {
+  margin: 20px auto;
   text-align: center;
-  border-radius: 10px;
-  background-color: #fdfdfd;
-  box-shadow: 0px 4px 55px rgba(0, 0, 0, 0.244);
+  width: 100%;
+  max-width: 1200px;
 }
 
-
-.imagepreview-container {
-  padding: 20px;
-  margin: 30px auto;
-  width: fit-content;
-  max-width: 90%;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #fdfdfd;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.096);
+.viewer-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin: 20px auto;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
+.three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #007bff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 65px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.upload-label {
+.scan-btn {
+  background-color: #4a4933e3;
+  color: white;
+  padding: 12px 24px;
   border: none;
-  background: none;
-  box-shadow: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.scan-btn:hover {
+  background-color: #3a3923e3;
+  transform: scale(1.05);
+}
+
+.scanning-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  z-index: 1000;
+}
+
+.style-preference {
+  margin: 20px auto;
   text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  max-width: 60%;
 }
 
-.upload-logo {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.style-select {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   margin-top: 10px;
-  border: none; /* Remove any default borders */
-  box-shadow: none;
-
+  width: 200px;
 }
 
-.upload-logo:hover {
-  transform: scale(1.2);
-}
-
-.upload-instruction {
-  margin-top: 10px;
-  font-size: 0.8em;
-  color: #555;
-  margin-top: 15px;
+/* Ensure all content sections stay below header */
+.upload-container,
+.imagepreview-container,
+.suggestions-container,
+.room-description,
+.cost-estimation,
+.workflow-section {
+  position: relative;
+  z-index: 1;
 }
 
 
